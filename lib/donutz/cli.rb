@@ -19,8 +19,7 @@ class Donutz::CLI
     puts "Thanks #{@name}! Please type in your selection using the numbered list below:"
     puts "The red numbers indicate how many donuts are currently in stock."
     puts ""
-    @donut_selection = ["Glazed", "Chocolate Sprinkles", "Rainbow Sprinkes", "Strawberry Glaze"]
-    # Needs scraped for actual KK data
+    @donut_selection = Donutz::Donut.all
   end
   
   def donut_menu_first_purchase
