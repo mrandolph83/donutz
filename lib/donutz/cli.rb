@@ -19,8 +19,8 @@ class Donutz::CLI
     puts "Thanks #{@name}! Please type in your selection using the numbered list below:"
     puts "The red numbers indicate how many donuts are currently in stock."
     puts ""
-    Donutz::Donut.new("Pretzels")
-    Donutz::Donut.new("Cocaine")
+    # Donutz::Donut.new("Pretzels")
+    # Donutz::Donut.new("Cocaine")
     @donut_selection = Donutz::Donut.all
   end
   

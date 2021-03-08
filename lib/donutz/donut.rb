@@ -11,6 +11,7 @@ class Donutz::Donut
   end
   
   def self.all
+    Donutz::Scraper.scrape_menu if @@all.empty?
     @@all
   end
   

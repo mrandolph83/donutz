@@ -5,6 +5,7 @@ require_relative "./donutz/scraper"
 
 require 'pry'
 require 'nokogiri'
+require 'open-uri'
 
 module Donutz
   class Error < StandardError; end

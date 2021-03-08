@@ -1,7 +1,7 @@
 class Donutz::Scraper
   
-  def scrape_donut_menu
-    doc = NokoGiri::HTML(open("https://www.krispykreme.com/menu/doughnuts"))
+  def self.scrape_menu
+    doc = Nokogiri::HTML(open("https://shipleydonuts.com/menu/"))
   end
   
 end 
