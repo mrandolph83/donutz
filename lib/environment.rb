@@ -1,5 +1,6 @@
 require_relative "./donutz/version"
 require_relative "./donutz/cli"
+require_relative "./donutz/donut"
 
 require 'pry'
 
