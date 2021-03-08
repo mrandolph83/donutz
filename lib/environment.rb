@@ -4,6 +4,7 @@ require_relative "./donutz/donut"
 require_relative "./donutz/scraper"
 
 require 'pry'
+require 'nokogiri'
 
 module Donutz
   class Error < StandardError; end
