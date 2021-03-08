@@ -19,12 +19,14 @@ class Donutz::CLI
     puts "Thanks #{@name}! Please type in your selection using the numbered list below:"
     puts "The red numbers indicate how many donuts are currently in stock."
     puts ""
+    Donutz::Donut.new("Pretzels")
+    Donutz::Donut.new("Cocaine")
     @donut_selection = Donutz::Donut.all
   end
   
   def donut_menu_first_purchase
     @donut_selection.each.with_index(1) {|donut, index|
-     puts "#{index}: #{donut} - 24"
+     puts "#{index}: #{donut.name} - 24"
     }
     make_selection
   end
@@ -32,7 +34,7 @@ class Donutz::CLI
     def donut_menu_later_purchases
     puts "What else would you like to add to your order?"
     @donut_selection.each.with_index(1) {|donut, index|
-     puts "#{index}: #{donut} - 24"
+     puts "#{index}: #{donu.name} - 24"
     }
     make_selection
   end
@@ -46,7 +48,7 @@ class Donutz::CLI
   def qty_selection(input)
     selected_donut = @donut_selection[input-1]
     puts ""
-    puts "Please enter how many #{selected_donut} donuts you would like." 
+    puts "Please enter how many #{selected_donut.name} donuts you would like." 
     puts "Type 'm' for more information about this donut."
     input = gets.strip
     purchase_qty
