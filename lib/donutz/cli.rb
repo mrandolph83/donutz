@@ -19,8 +19,6 @@ class Donutz::CLI
     puts "Thanks #{@name}! Please type in your selection using the numbered list below:"
     puts "The red numbers indicate how many donuts are currently in stock."
     puts ""
-    # Donutz::Donut.new("Pretzels")
-    # Donutz::Donut.new("Cocaine")
     @donut_selection = Donutz::Donut.all
   end
   
@@ -43,6 +41,10 @@ class Donutz::CLI
     input = gets.strip.to_i
     qty_selection(input) if valid_selection(input, @donut_selection) 
   end
+  
+    def valid_selection(input, data)
+    input.to_i <= data.length && input.to_i > 0
+  end
  
   
   def qty_selection(input)
@@ -50,15 +52,22 @@ class Donutz::CLI
     puts ""
     puts "Please enter how many #{selected_donut.name} donuts you would like." 
     puts "Type 'm' for more information about this donut."
-    input = gets.strip
-    purchase_qty
-end
+    puts ""
+    qty = gets.strip
+    if qty = "M" || "m"
+      donut_information(selected_donut)
+    else  
+      purchase_qty
+    end
+  end
+  
+  def donut_information(selected_donut)
+    puts selected_donut.name
+  # Get information about the selected donut, as well as a picture
+    puts "This donut likes to go on long walks on the beach, and is a big Bridgerton fan."
+  end
 
 # binding.pry
-  
-  def valid_selection(input, data)
-    input.to_i <= data.length && input.to_i > 0
-  end
     
   def purchase_qty
     #add_to_order
