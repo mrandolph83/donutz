@@ -32,7 +32,7 @@ class Donutz::CLI
     def donut_menu_later_purchases
     puts "What else would you like to add to your order?"
     @donut_selection.each.with_index(1) {|donut, index|
-     puts "#{index}: #{donu.name} - 24"
+     puts "#{index}: #{donut.name} - 24"
     }
     make_selection
   end
@@ -55,14 +55,15 @@ class Donutz::CLI
     puts ""
     qty = gets.strip.to_i
     if qty == 0
-      donut_information(selected_donut)
+      donut_information(selected_donut, input-1)
     else  
       purchase_qty(qty, selected_donut)
     end
   end
   
-  def donut_information(selected_donut)
+  def donut_information(selected_donut, input)
     puts selected_donut.name
+    puts input
   # Get information about the selected donut, as well as a picture
     puts "This donut likes to go on long walks on the beach, and is a big Bridgerton fan."
   end
