@@ -51,13 +51,13 @@ class Donutz::CLI
     selected_donut = @donut_selection[input-1]
     puts ""
     puts "Please enter how many #{selected_donut.name} donuts you would like." 
-    puts "Type 'm' for more information about this donut."
+    puts "Type '0' for more information about this donut."
     puts ""
-    qty = gets.strip
-    if qty = "M" || "m"
+    qty = gets.strip.to_i
+    if qty == 0
       donut_information(selected_donut)
     else  
-      purchase_qty
+      purchase_qty(qty, selected_donut)
     end
   end
   
@@ -69,8 +69,8 @@ class Donutz::CLI
 
 # binding.pry
     
-  def purchase_qty
-    #add_to_order
+  def purchase_qty(qty, selected_donut)
+   puts "You have ordered #{qty} #{selected_donut.name} doughnuts."
    puts "Does this complete your order? (Y/N)" 
    puts ""
    input = gets.strip.upcase
