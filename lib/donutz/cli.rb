@@ -15,11 +15,11 @@ class Donutz::CLI
   end
   
   def get_menu
+    @donut_selection = Donutz::Donut.all
     puts ""
-    puts "Thanks #{@name}! Please type in your selection using the numbered list below:"
+    puts "Thanks #{@name}! Please type in your selection (1-#{@donut_selection.length}) using the numbered list below:"
     puts "The red numbers indicate how many donuts are currently in stock."
     puts ""
-    @donut_selection = Donutz::Donut.all
   end
   
   def donut_menu_first_purchase
@@ -39,11 +39,17 @@ class Donutz::CLI
   
   def make_selection
     input = gets.strip.to_i
-    qty_selection(input) if valid_selection(input, @donut_selection) 
+    valid_selection(input) 
   end
   
-    def valid_selection(input, data)
-    input.to_i <= data.length && input.to_i > 0
+  def valid_selection(input)
+    last_menu_item = @donut_selection.length
+   if input.between?(1, last_menu_item)
+    qty_selection(input)
+   else
+    puts "Please enter a valid number (1-#{@donut_selection.length}) to continue your order."
+     make_selection
+    end
   end
  
   
@@ -51,19 +57,27 @@ class Donutz::CLI
     selected_donut = @donut_selection[input-1]
     puts ""
     puts "Please enter how many #{selected_donut.name} donuts you would like." 
-    puts "Type '0' for more information about this donut."
+    puts "Type 'i' for more information about this donut."
     puts ""
-    qty = gets.strip.to_i
-    if qty == 0
+    qty = gets.strip
+    # if valid_qty(qty)
+    if qty.upcase == "I"
       donut_information(selected_donut, input-1)
-    else  
-      purchase_qty(qty, selected_donut)
+    elsif valid_qty(qty.to_i, selected_donut)
+       purchase_qty(qty, selected_donut)
+    else 
+      puts "Please enter a valid qty. There are #{selected_donut.qty} #{selected_donut.name} donuts left at our store."
+      qty_selection(input)
     end
   end
   
   def donut_information(selected_donut, input)
     selected_info = Donutz::Scraper.scrape_info(input)
     puts "#{selected_info}"
+  end
+  
+  def valid_qty(qty, selected_donut)
+    qty.between?(1, selected_donut.qty)
   end
 
 # binding.pry

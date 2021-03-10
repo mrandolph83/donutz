@@ -11,7 +11,7 @@ class Donutz::Scraper
     end
   end
   
-  def self.scrape_info(input)
+    def self.scrape_info(input)
     doc = Nokogiri::HTML(open("https://shipleydonuts.com/menu/"))
     urls = doc.css("h4 > a").map { |link| link['href'] }
     info_html = urls[input]
