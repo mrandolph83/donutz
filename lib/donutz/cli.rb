@@ -23,15 +23,15 @@ class Donutz::CLI
   end
   
   def donut_menu_first_purchase
-    @donut_selection.each.with_index(1) {|donut, index|
-     puts "#{index}: #{donut.name} - 24"
+    @donut_selection.each.with_index(1) {|(donut, qty), index|
+     puts "#{index}: #{donut.name} - #{donut.qty}"
     }
     make_selection
   end
   
     def donut_menu_later_purchases
     puts "What else would you like to add to your order?"
-    @donut_selection.each.with_index(1) {|donut, index|
+    @donut_selection.each.with_index(1) {|(donut, qty), index|
      puts "#{index}: #{donut.name} - 24"
     }
     make_selection

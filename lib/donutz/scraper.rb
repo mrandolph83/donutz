@@ -20,12 +20,9 @@ class Donutz::Scraper
     info = info_scrape.css("div[class='text text-page'] > p")
     pic = info_scrape.css()
     puts "Awesome picture"
-    split_text = info.text.split(".")
-    join_text = split_text[0..-1].join
-    # binding.pry
-    join_text
+    info.text
+    # # binding.pry
   end
-  
-  def self.scrape_info
     
-end 
+    
+  end 
