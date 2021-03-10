@@ -3,23 +3,22 @@ class Donutz::Scraper
   
   def self.scrape_menu
       doc = Nokogiri::HTML(open("https://shipleydonuts.com/menu/"))
-      donuts = doc.css("h4 > a")
-      donuts.each do |donut|
-      name = donut.text
+      doc.css("h4 > a").each do |donut_traits|
+ 
+      name = donut_traits.text
       qty = 36
-      Donutz::Donut.new(name, qty)
-    end
+      url = donut_traits.attr("href")
+      # pic = Get pic from gem
+     
+      Donutz::Donut.new(name, qty, url)
+   end
   end
   
-    def self.scrape_info(input)
-    doc = Nokogiri::HTML(open("https://shipleydonuts.com/menu/"))
-    urls = doc.css("h4 > a").map { |link| link['href'] }
-    info_html = urls[input]
+  def self.scrape_info(selected_donut)
     
-    info_scrape = Nokogiri::HTML(open("#{info_html}"))
+    info_scrape = Nokogiri::HTML(open("#{selected_donut.url}"))
     info = info_scrape.css("div[class='text text-page'] > p")
-    pic = info_scrape.css()
-    puts "Awesome picture"
+    # pic = info_scrape.css()
     info.text
     # # binding.pry
   end

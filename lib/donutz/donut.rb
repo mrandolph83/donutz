@@ -1,12 +1,13 @@
 class Donutz::Donut
   
-  attr_accessor :name, :qty
+  attr_accessor :name, :qty, :url
   
   @@all = []
   
-  def initialize(name, qty)
+  def initialize(name, qty, url)
   @name = name
   @qty = qty
+  @url = url
   save
   end
   

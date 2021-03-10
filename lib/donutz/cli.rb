@@ -22,6 +22,7 @@ attr_accessor :order_name
     puts "Thanks #{@order_name}! Please type in your selection (1-#{@donut_selection.length}) using the numbered list below:"
     puts "The red numbers indicate how many donuts are currently in stock."
     puts ""
+    # binding.pry
   end
   
   def donut_menu_first_purchase
@@ -64,7 +65,7 @@ attr_accessor :order_name
     qty = gets.strip
     # if valid_qty(qty)
     if qty.upcase == "I"
-      donut_information(selected_donut, input-1)
+      donut_information(selected_donut)
     elsif valid_qty(qty.to_i, selected_donut)
        purchase_qty(qty, selected_donut)
     else 
@@ -73,8 +74,10 @@ attr_accessor :order_name
     end
   end
   
-  def donut_information(selected_donut, input)
-    selected_info = Donutz::Scraper.scrape_info(input)
+  def donut_information(selected_donut)
+    selected_info = Donutz::Scraper.scrape_info(selected_donut)
+    puts "Awesome picture"
+    # @donut_selection.pic. I'm guessing the object is pic url
     puts "#{selected_info}"
   end
   
