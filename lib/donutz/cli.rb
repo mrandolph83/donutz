@@ -63,9 +63,6 @@ class Donutz::CLI
   
   def donut_information(selected_donut, input)
     selected_info = Donutz::Scraper.scrape_info(input)
-    puts selected_donut.name
-    puts input
-  # Get information about the selected donut, as well as a picture
     puts "#{selected_info}"
   end
 

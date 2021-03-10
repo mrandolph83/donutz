@@ -4,9 +4,9 @@ class Donutz::Donut
   
   @@all = []
   
-  def initialize(name)
-  # Set quantity starting at 36 if no qty is given 
+  def initialize(name, qty)
   @name = name
+  @qty = qty
   save
   end
   
