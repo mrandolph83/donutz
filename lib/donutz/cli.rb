@@ -1,6 +1,8 @@
 require 'pry'
 class Donutz::CLI 
   
+attr_accessor :order_name
+  
   def call
     new_order
     get_menu
@@ -10,14 +12,14 @@ class Donutz::CLI
   def new_order
     puts "Welcome! Please enter a name for your order:"
     puts ""
-    @name = gets.strip
+    @order_name = gets.strip
     # instantiates new :order_name in Transaction class. Make name colorized
   end
   
   def get_menu
     @donut_selection = Donutz::Donut.all
     puts ""
-    puts "Thanks #{@name}! Please type in your selection (1-#{@donut_selection.length}) using the numbered list below:"
+    puts "Thanks #{@order_name}! Please type in your selection (1-#{@donut_selection.length}) using the numbered list below:"
     puts "The red numbers indicate how many donuts are currently in stock."
     puts ""
   end
@@ -101,7 +103,7 @@ class Donutz::CLI
   # end
   
   def complete_order
-   puts "Thank you #{@name}! Your order is listed below. Press [p] to print." 
+   puts "Thank you #{@order_name}! Your order is listed below. Press [p] to print." 
    puts ""
    puts "Glazed - $12"
    puts "Chocolate Sprinkes - $13"
