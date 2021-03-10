@@ -110,6 +110,7 @@ attr_accessor :order_name
    puts ""
    puts "Glazed - $12"
    puts "Chocolate Sprinkes - $13"
+  # Time.now stamp
   end
 
 end
