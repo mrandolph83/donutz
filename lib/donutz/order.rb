@@ -17,8 +17,9 @@ class Donutz::Order
   end
   
   
-  def self.add_to_order(selected_donut, qty)
-   @order_name
+  def self.add_to_order(name, selected_donut, qty)
+  if name = @@orders.order_name
+  {:selected_donut = qty}
   binding.pry
   end
   
