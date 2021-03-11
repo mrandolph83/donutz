@@ -13,7 +13,7 @@ attr_accessor :order_name
     puts "Welcome! Please enter a name for your order:"
     puts ""
     @order_name = gets.strip
-    # Donutz::Order.new(@order_name)
+    Donutz::Order.new(@order_name)
     # instantiates new :order_name in Transaction class. Make name colorized
   end
   
@@ -36,7 +36,7 @@ attr_accessor :order_name
     def donut_menu_later_purchases
     puts "What else would you like to add to your order?"
     @donut_selection.each.with_index(1) {|(donut, qty), index|
-     puts "#{index}: #{donut.name} - 24"
+     puts "#{index}: #{donut.name} - #{donut.qty}"
     }
     make_selection
   end
@@ -85,12 +85,11 @@ attr_accessor :order_name
   def valid_qty(qty, selected_donut)
     qty.between?(1, selected_donut.qty)
   end
-
-# binding.pry
     
-  def purchase_qty(name, selected_donut, qty)
-  Donutz::Order.new(name, selected_donut.name, qty)
-   puts "You have ordered #{qty} #{selected_donut.name} doughnuts."
+  def purchase_qty(name, selected_donut, purchase_qty)
+   Donutz::Order.add_to_order(selected_donut.name, purchase_qty)
+   Donutz::Donut.qty_update(selected_donut, purchase_qty)
+   puts "You have ordered #{purchase_qty} #{selected_donut.name} doughnuts."
    puts "Does this complete your order? (Y/N)" 
    puts ""
    input = gets.strip.upcase
@@ -100,6 +99,7 @@ attr_accessor :order_name
       donut_menu_later_purchases
     end
   end
+  
   
   # def add_to_order
   #   if amount <= qty left, remove that amount from updated menu selection.

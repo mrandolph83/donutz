@@ -5,19 +5,28 @@ class Donutz::Order
   
   attr_accessor :order_name, :order_items
   
-  def initialize(order_name, donut, qty)
+  def initialize(order_name)
     @order_name = order_name
-    @order_items = {donut => qty}
+    @order_items = []
     save
   end 
  
   def save
     @@orders << self 
+   
+  end
+  
+  
+  def self.add_to_order(selected_donut, qty)
+   @order_name
+  binding.pry
   end
   
   def self.all
     @@orders
   end
+  
+
   
   # def self.new_order(name, donut, qty)
   #   new_order = self.new(name)
