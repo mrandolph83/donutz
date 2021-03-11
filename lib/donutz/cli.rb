@@ -13,6 +13,7 @@ attr_accessor :order_name
     puts "Welcome! Please enter a name for your order:"
     puts ""
     @order_name = gets.strip
+    # Donutz::Order.new(@order_name)
     # instantiates new :order_name in Transaction class. Make name colorized
   end
   
@@ -67,7 +68,7 @@ attr_accessor :order_name
     if qty.upcase == "I"
       donut_information(selected_donut)
     elsif valid_qty(qty.to_i, selected_donut)
-       purchase_qty(qty, selected_donut)
+       purchase_qty(@order_name, selected_donut, qty)
     else 
       puts "Please enter a valid qty. There are #{selected_donut.qty} #{selected_donut.name} donuts left at our store."
       qty_selection(input)
@@ -87,7 +88,8 @@ attr_accessor :order_name
 
 # binding.pry
     
-  def purchase_qty(qty, selected_donut)
+  def purchase_qty(name, selected_donut, qty)
+  Donutz::Order.new(name, selected_donut.name, qty)
    puts "You have ordered #{qty} #{selected_donut.name} doughnuts."
    puts "Does this complete your order? (Y/N)" 
    puts ""
@@ -110,6 +112,8 @@ attr_accessor :order_name
    puts ""
    puts "Glazed - $12"
    puts "Chocolate Sprinkes - $13"
+   puts Donutz::Order.all
+  # binding.pry
   # Time.now stamp
   end
 

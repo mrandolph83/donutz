@@ -1,25 +1,32 @@
-class Donutz::Orders
+require 'pry'
+class Donutz::Order
   
   @@orders = []
   
-  attr_accessor :order_name, :order
+  attr_accessor :order_name, :order_items
   
-  def initialize(order_name)
+  def initialize(order_name, donut, qty)
     @order_name = order_name
-    @order = []
+    @order_items = {donut => qty}
     save
   end 
-  
+ 
   def save
     @@orders << self 
   end
   
-  def take_order(name, donut, qty_ordered)
-    # Create a new hash with donut name and qty amount in a hash, i.e. "Glazed => 24"
-    # takes in donut name and quanity. Adds to order
-    # Saves order as an object
-    
+  def self.all
+    @@orders
   end
+  
+  # def self.new_order(name, donut, qty)
+  #   new_order = self.new(name)
+  #   @order_items << order_items[donut] = qty
+  #   save
+   
+  # end
+  
+ 
   
   # def remove_item
   #   Take a donut off from the list. Replenish qty of that donut
