@@ -6,23 +6,31 @@ class Donutz::Order
   attr_accessor :name, :order_items
   
   def initialize(name)
+    if self.name =
     @name = name
     @order_items = []
     save
+    
   end 
  
   def save
-    @@all << self 
+    @@all << self
+    binding.pry
+    check_variables
+  end
+  
+  def check_variables
+    self 
   end
   
   
-  def self.add_to_order(selected_donut, qty)
+  def add_to_order(selected_donut, qty)
   selected_donut
-  binding.pry
+  
   end
   
   def self.all
-    @@oall
+    @@all
   end
   
 
