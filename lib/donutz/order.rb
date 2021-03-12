@@ -5,21 +5,19 @@ class Donutz::Order
   
   attr_accessor :name, :order_items
   
-  def initialize(name, donut, qty)
-    if self.name != name
+  def initialize(name)
     @name = name
-    order_hash = {donut.name => qty}
     @order_items = []
-    @order_items << order_hash
-    save
-    
-    else
-    order_hash = {donut.name => qty}
-    @order_items << order_hash 
-    save
-    end
   end 
  
+ 
+ def self.add_to_order(donut, qty)
+    name = self.name
+    order_hash = {donut.name => qty}
+    @order_items << order_hash
+    
+ end
+  
   def save
     @@all << self
   end

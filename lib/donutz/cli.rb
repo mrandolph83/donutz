@@ -1,8 +1,6 @@
 require 'pry'
 class Donutz::CLI 
   
-attr_accessor :order_name
-  
   def call
     new_order
     get_menu
@@ -13,7 +11,8 @@ attr_accessor :order_name
     puts "Welcome! Please enter a name for your order:"
     puts ""
     @order_name = gets.strip
-    # Donutz::Order.new(@order_name)
+    name = @order_name
+    Donutz::Order.new(name)
     # instantiates new :order_name in Transaction class. Make name colorized
   end
   
@@ -87,7 +86,7 @@ attr_accessor :order_name
   end
     
   def purchase_qty(name, selected_donut, purchase_qty)
-   Donutz::Order.new(name, selected_donut, purchase_qty)
+   Donutz::Order.add_to_order(selected_donut, purchase_qty)
    Donutz::Donut.qty_update(selected_donut, purchase_qty)
    puts "You have ordered #{purchase_qty} #{selected_donut.name} doughnuts."
    puts "Does this complete your order? (Y/N)" 
