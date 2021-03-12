@@ -87,7 +87,7 @@ attr_accessor :order_name
   end
     
   def purchase_qty(name, selected_donut, purchase_qty)
-   Donutz::Order.add_to_order(selected_donut.name, purchase_qty)
+   Donutz::Order.add_to_order(selected_donut, purchase_qty)
    Donutz::Donut.qty_update(selected_donut, purchase_qty)
    puts "You have ordered #{purchase_qty} #{selected_donut.name} doughnuts."
    puts "Does this complete your order? (Y/N)" 

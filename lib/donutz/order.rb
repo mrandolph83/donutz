@@ -1,30 +1,28 @@
 require 'pry'
 class Donutz::Order
   
-  @@orders = []
+  @@all = []
   
-  attr_accessor :order_name, :order_items
+  attr_accessor :name, :order_items
   
-  def initialize(order_name)
-    @order_name = order_name
+  def initialize(name)
+    @name = name
     @order_items = []
     save
   end 
  
   def save
-    @@orders << self 
-   
+    @@all << self 
   end
   
   
-  def self.add_to_order(name, selected_donut, qty)
-  if name = @@orders.order_name
-  {:selected_donut = qty}
+  def self.add_to_order(selected_donut, qty)
+  selected_donut
   binding.pry
   end
   
   def self.all
-    @@orders
+    @@oall
   end
   
 

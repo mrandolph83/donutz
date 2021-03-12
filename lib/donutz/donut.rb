@@ -16,7 +16,7 @@ class Donutz::Donut
     @@all
   end
   
-  def self.qty_update(selected_donut, purchase_qty)
+  def qty_update(selected_donut, purchase_qty)
     selected_donut.qty = selected_donut.qty - purchase_qty.to_i
   end
   
