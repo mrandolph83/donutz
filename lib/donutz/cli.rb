@@ -12,7 +12,7 @@ class Donutz::CLI
     puts ""
     @order_name = gets.strip
     name = @order_name
-    Donutz::Order.new(name)
+    @order = Donutz::Order.new(name) # CHANGED THIS 
     # instantiates new :order_name in Transaction class. Make name colorized
   end
   
@@ -86,7 +86,7 @@ class Donutz::CLI
   end
     
   def purchase_qty(name, selected_donut, purchase_qty)
-   Donutz::Order.add_to_order(selected_donut, purchase_qty)
+   @order.add_to_order(selected_donut, purchase_qty)
    Donutz::Donut.qty_update(selected_donut, purchase_qty)
    puts "You have ordered #{purchase_qty} #{selected_donut.name} doughnuts."
    puts "Does this complete your order? (Y/N)" 
@@ -112,7 +112,7 @@ class Donutz::CLI
    puts "Glazed - $12"
    puts "Chocolate Sprinkes - $13"
    puts Donutz::Order.all
-  # binding.pry
+  binding.pry
   # Time.now stamp
   end
 

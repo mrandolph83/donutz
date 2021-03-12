@@ -8,14 +8,14 @@ class Donutz::Order
   def initialize(name)
     @name = name
     @order_items = []
+    save
   end 
  
  
- def self.add_to_order(donut, qty)
-    name = self.name
+ def add_to_order(donut, qty)
     order_hash = {donut.name => qty}
     @order_items << order_hash
-    
+    save
  end
   
   def save
