@@ -15,7 +15,6 @@ class Donutz::Order
  def add_to_order(donut, qty)
     order_hash = {donut.name => qty}
     @order_items << order_hash
-    save
  end
   
   def save

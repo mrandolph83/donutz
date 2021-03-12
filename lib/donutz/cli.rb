@@ -109,9 +109,7 @@ class Donutz::CLI
   def complete_order
    puts "Thank you #{@order_name}! Your order is listed below. Press [p] to print." 
    puts ""
-   puts "Glazed - $12"
-   puts "Chocolate Sprinkes - $13"
-   puts Donutz::Order.all
+   puts Donutz::Order.all.each {|donuts| 
   binding.pry
   # Time.now stamp
   end
