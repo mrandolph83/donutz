@@ -26,6 +26,7 @@ class Donutz::CLI
   end
   
   def donut_menu_first_purchase
+    puts ""
     @donut_selection.each.with_index(1) {|(donut, qty), index|
      puts "#{index}: #{donut.name} - #{donut.qty}"
     }
@@ -34,6 +35,7 @@ class Donutz::CLI
   
     def donut_menu_later_purchases
     puts "What else would you like to add to your order?"
+    puts ""
     @donut_selection.each.with_index(1) {|(donut, qty), index|
      puts "#{index}: #{donut.name} - #{donut.qty}"
     }
@@ -41,6 +43,7 @@ class Donutz::CLI
   end
   
   def make_selection
+    puts ""
     input = gets.strip.to_i
     valid_selection(input) 
   end
@@ -76,9 +79,14 @@ class Donutz::CLI
   
   def donut_information(selected_donut)
     selected_info = Donutz::Scraper.scrape_info(selected_donut)
+    puts ""
     puts "Awesome picture"
     # @donut_selection.pic. I'm guessing the object is pic url
     puts "#{selected_info}"
+    puts ""
+    puts "Press the ENTER key to return to the Order Menu."
+    input = gets.strip
+    donut_menu_later_purchases if input == ""
   end
   
   def valid_qty(qty, selected_donut)
@@ -88,6 +96,7 @@ class Donutz::CLI
   def purchase_qty(name, selected_donut, purchase_qty)
    @order.add_to_order(selected_donut, purchase_qty)
    Donutz::Donut.qty_update(selected_donut, purchase_qty)
+   puts ""
    puts "You have ordered #{purchase_qty} #{selected_donut.name} doughnuts."
    puts "Does this complete your order? (Y/N)" 
    puts ""
@@ -100,17 +109,16 @@ class Donutz::CLI
   end
   
   
-  # def add_to_order
-  #   if amount <= qty left, remove that amount from updated menu selection.
-  #   else "There are not enough GLAZED donuts to meet your request. Please enter a new number"
-  #   end
-  # end
   
   def complete_order
+   puts ""
    puts "Thank you #{@order_name}! Your order is listed below. Press [p] to print." 
    puts ""
    puts Donutz::Order.all.each {|donuts| 
-  binding.pry
+   puts donuts.name.upcase
+   puts donuts.order_items
+   }
+  # binding.pry
   # Time.now stamp
   end
 
