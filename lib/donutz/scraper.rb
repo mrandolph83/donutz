@@ -27,9 +27,11 @@ class Donutz::Scraper
     
     info_scrape = Nokogiri::HTML(open("#{selected_donut.url}"))
     info = info_scrape.css("div[class='text text-page'] > p")
-    # pic = info_scrape.css()
+    pic = info_scrape.css("div[class='image'] > img")
+    pic_selection = pic.css("src")
     info.text
-    # # binding.pry
+    
+    binding.pry
   end
     
     
