@@ -1,4 +1,4 @@
-
+require 'launchy'
 require 'pry'
 require 'colorize'
 class Donutz::CLI 
@@ -131,10 +131,12 @@ class Donutz::CLI
     if input == ""
       donut_menu_later_purchases
     elsif input.upcase == "P"
-      Donutz::Scraper.web_selection
+      pic_site = Donutz::Scraper.web_selection
+      system("open", "#{pic_site}")
       donut_information(selected_donut)
     else input.upcase == "N"
-      
+      nutrition_info = Donutz::Scraper.nutrition
+      system("open", "#{nutrition_info}")
       donut_information(selected_donut)
     end
   end
@@ -161,8 +163,10 @@ class Donutz::CLI
   
   
   def complete_order
+   
+   t = Time.new - 14400
    puts ""
-   puts "Thank you #{@order_name}! Your order is listed below. Press [p] to print." 
+   puts "Thank you #{@order_name}! Your order, placed on #{t.month}/#{t.day}/#{t.year} at #{t.strftime("%I:%M %p")}, is listed below." 
    puts ""
    puts Donutz::Order.all.each {|donuts| 
    puts donuts.name.upcase
