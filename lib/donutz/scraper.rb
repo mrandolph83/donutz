@@ -29,14 +29,15 @@ class Donutz::Scraper
     info = info_scrape.css("div[class='text text-page'] > p")
     pic = info_scrape.css("div[class='image'] > img")
     pic_selection = pic[-1]
-    pic_select = pic_selection.attributes.values[6]
-    final_select = pic_select.each {|val|
-    puts val
-    }
-    final_select
-    # final_selection = pic_select.values.flatten
-    # pick_me = final_selection[6].values
-    binding.pry
+    pic_select = pic_selection.attributes.values[-2]
+    @final_selection = pic_select.value.split(" ").first
+      # binding.pry
+    info.text
+  
+  end
+  
+  def self.web_selection
+    puts @final_selection
   end
     
     

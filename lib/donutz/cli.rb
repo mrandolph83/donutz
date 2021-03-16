@@ -1,3 +1,4 @@
+
 require 'pry'
 require 'colorize'
 class Donutz::CLI 
@@ -109,6 +110,11 @@ class Donutz::CLI
     end
   end
   
+    def self.web_link(final_selection)
+    return final_selection
+    
+  end
+  
   def donut_information(selected_donut)
     selected_info = Donutz::Scraper.scrape_info(selected_donut)
     yellow_p = "'p'".colorize(:yellow)
@@ -125,14 +131,13 @@ class Donutz::CLI
     if input == ""
       donut_menu_later_purchases
     elsif input.upcase == "P"
-      puts "Open Me Daddy"
+      Donutz::Scraper.web_selection
       donut_information(selected_donut)
     else input.upcase == "N"
-      puts "This is terrible for you, you fool"
+      
       donut_information(selected_donut)
     end
   end
-  
   
   def valid_qty(qty, selected_donut)
     qty.between?(1, selected_donut.qty)
