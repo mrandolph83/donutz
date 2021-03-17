@@ -6,7 +6,9 @@ class Donutz::Scraper
       donut_quotes = []
       doc.css("em").each do |quotes|
       donut_quotes << quotes.text
+      
    end
+      donut_quotes.pop
       donut_quotes.sample
       
   end

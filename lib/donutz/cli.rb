@@ -163,10 +163,10 @@ class Donutz::CLI
   
   
   def complete_order
-   
+   name_yellow = @order_name.colorize(:yellow)
    t = Time.new - 14400
    puts ""
-   puts "Thank you #{@order_name}! Your order, placed on #{t.month}/#{t.day}/#{t.year} at #{t.strftime("%I:%M %p")}, is listed below." 
+   puts "Thank you #{name_yellow}! Your order, placed on #{t.month}/#{t.day}/#{t.year} at #{t.strftime("%I:%M %p")}, is listed below." 
    puts ""
    puts Donutz::Order.all.each {|donuts| 
    puts donuts.name.upcase
