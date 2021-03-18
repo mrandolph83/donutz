@@ -4,6 +4,7 @@ require_relative "./donutz/donut"
 require_relative "./donutz/order"
 require_relative "./donutz/scraper"
 require_relative "./donutz/ascii"
+require_relative "./donutz/information"
 
 require 'pry'
 require 'nokogiri'

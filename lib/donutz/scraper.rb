@@ -35,7 +35,7 @@ class Donutz::Scraper
     nutrition_url = info_scrape.css("div[class='btns'] > a")
     nutrition = nutrition_url.attr("href").value
     
-   
+    Donutz::Information.new(info, pic, nutrition)
   end
   
   def self.pic_selection

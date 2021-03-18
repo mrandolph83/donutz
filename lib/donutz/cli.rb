@@ -42,7 +42,7 @@ class Donutz::Cli
     print " - "
     print "#{donut.qty}\n".colorize(:yellow)
     }
-    
+  
     make_selection
   end
   
@@ -56,12 +56,13 @@ class Donutz::Cli
     print " - "
     print "#{donut.qty}\n".colorize(:yellow)
     }
-    puts ""
     make_selection
   end
   
   def make_selection
+    puts ""
     input = gets.strip.to_i
+    
     if input.between?(1, @donut_selection.length)
     qty_selection(input)
     else
@@ -96,6 +97,9 @@ class Donutz::Cli
 
   def donut_information(selected_donut)
     Donutz::Scraper.scrape_info(selected_donut)
+    info = Donutz::Information.all.last
+    pic = info.pic
+    nutrition = info.nutrition
     
     yellow_p = "'p'".colorize(:yellow)
     yellow_n = "'n'".colorize(:yellow)
@@ -104,22 +108,21 @@ class Donutz::Cli
     puts ""
     puts selected_donut.name.upcase.colorize(:light_magenta)
    
-    puts "\n#{selected_info}\n"
+    puts "\n#{info.info}\n"
     puts "\nPress #{yellow_p} to open a picture of this donught in your browser,"
     puts "or #{yellow_n} to open nutrition facts."
     puts "\nPress the #{yellow_enter} key to return to the Order Menu."
+    puts ""
     
     input = gets.strip
     
     if input == ""
       donut_menu_later_purchases
     elsif input.upcase == "P"
-      pic_site = Donutz::Scraper.pic_selection
-      system("open", "#{pic_site}")
+      puts "#{pic}"
       donut_information(selected_donut)
     else input.upcase == "N"
-      nutrition_info = Donutz::Scraper.nutrition
-      system("open", "#{nutrition_info}")
+      puts "#{nutrition}"
       donut_information(selected_donut)
     end
   end
