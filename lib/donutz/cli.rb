@@ -162,6 +162,20 @@ class Donutz::Cli
     puts Donutz::Ascii.bottom_footer
     quote_selection = Donutz::Scraper.scrape_quotes 
     puts "'#{quote_selection}'".colorize(:yellow)
+    next_order
+  end
+  
+  def next_order
+    puts "Would you like to place another order? (Y/N)"
+    input = gets.strip
+    
+    if input.upcase == "Y"
+      call
+    elsif input.upcase == "N"
+    nil
+    else
+    next_order
+    end
   end
   
 end

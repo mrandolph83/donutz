@@ -1,8 +1,6 @@
 # Donutz
 
-A prototype app to order your favorite donuts from your favorite donut shop. 
-
-TODO: Delete this and the text above, and describe your gem
+A prototype app to order your favorite donuts from your favorite donut shop. This app allows you to know what donuts are still available at the shop, and how many are still left. After placing an order, real-time updates show how many donuts are left after each order is placed.
 
 ## Installation
 
@@ -22,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Follow the prompts to place an order at the donut shop, and real-time data will update how many of each variety is left. You can also view a description, look at a picture, or get nutritional info on each variety of donut. 
 
 ## Development
 
