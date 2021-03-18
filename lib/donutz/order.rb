@@ -25,5 +25,4 @@ class Donutz::Order
     @@all
   end
   
-  
 end

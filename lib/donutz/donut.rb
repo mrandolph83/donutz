@@ -5,10 +5,10 @@ class Donutz::Donut
   @@all = []
   
   def initialize(name, qty, url)
-  @name = name
-  @qty = qty
-  @url = url
-  save
+    @name = name
+    @qty = qty
+    @url = url
+    save
   end
   
   def self.all

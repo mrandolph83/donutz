@@ -1,7 +1,7 @@
 class Donutz::Ascii
 
-def self.top_header
-  return "
+  def self.top_header
+    return "
 
          ▄████████████▄
      ▄███▀░░░░░░░░░░▀███▄
@@ -20,10 +20,10 @@ def self.top_header
    ███░░░░░░░░░░░░░░░░███
     ▀███▄░░░░░░░░░░▄███▀
        ▀████████████▀".colorize(:light_magenta)
-end
+  end
 
-def self.bottom_footer
-   return "
+  def self.bottom_footer
+    return "
    
          d888888b                         d888888b
    d888    8888b                    d888888   888b
@@ -38,6 +38,6 @@ d8P        88888888b             d88888888888     b8b
          88            /__/  \            88
          88          _(<_   / )_          88
         d88b        (__\_\_|_/__)        d88b".colorize(:light_magenta)
-end
+  end
 
 end 

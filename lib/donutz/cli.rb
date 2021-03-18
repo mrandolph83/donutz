@@ -1,8 +1,7 @@
 require 'pry'
 require 'colorize'
-class Donutz::CLI 
+class Donutz::Cli
   
-  attr_accessor :pic,: 
   
   def call
     new_order
@@ -115,7 +114,7 @@ class Donutz::CLI
     if input == ""
       donut_menu_later_purchases
     elsif input.upcase == "P"
-      pic_site = Donutz::Scraper.web_selection
+      pic_site = Donutz::Scraper.pic_selection
       system("open", "#{pic_site}")
       donut_information(selected_donut)
     else input.upcase == "N"
@@ -128,12 +127,14 @@ class Donutz::CLI
   def purchase_qty(name, selected_donut, purchase_qty)
    @order.add_to_order(selected_donut, purchase_qty)
    Donutz::Donut.qty_update(selected_donut, purchase_qty)
+   
    puts ""
    puts "You have ordered #{purchase_qty} #{selected_donut.name} doughnuts."
    puts "Does this complete your order? (Y/N)" 
    puts ""
-   input = gets.strip.upcase
-    if input == "Y"
+   input = gets.strip
+   
+    if input.upcase == "Y"
       complete_order
     else
       donut_menu_later_purchases
@@ -151,8 +152,8 @@ class Donutz::CLI
     puts donuts.name.upcase
     puts donuts.order_items
     }
-    puts Donutz::Ascii.bottom_footer
     
+    puts Donutz::Ascii.bottom_footer
     quote_selection = Donutz::Scraper.scrape_quotes 
     puts "'#{quote_selection}'".colorize(:yellow)
   end
