@@ -119,10 +119,13 @@ class Donutz::Cli
     if input == ""
       donut_menu_later_purchases
     elsif input.upcase == "P"
-      puts "#{pic}"
+      puts pic
+      system("open #{pic}")
       donut_information(selected_donut)
+      
     else input.upcase == "N"
-      puts "#{nutrition}"
+      puts nutrition
+      system("open #{nutrition}")
       donut_information(selected_donut)
     end
   end
