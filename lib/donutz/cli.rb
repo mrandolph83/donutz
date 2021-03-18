@@ -95,7 +95,7 @@ class Donutz::Cli
   end
 
   def donut_information(selected_donut)
-    selected_info = Donutz::Scraper.scrape_info(selected_donut)
+    Donutz::Scraper.scrape_info(selected_donut)
     
     yellow_p = "'p'".colorize(:yellow)
     yellow_n = "'n'".colorize(:yellow)

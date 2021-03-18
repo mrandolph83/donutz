@@ -24,17 +24,18 @@ class Donutz::Scraper
   
   def self.scrape_info(selected_donut)
     info_scrape = Nokogiri::HTML(open("#{selected_donut.url}"))
-    info = info_scrape.css("div[class='text text-page'] > p")
+    information = info_scrape.css("div[class='text text-page'] > p")
+    info = information.text
    
     picture = info_scrape.css("div[class='image'] > img")
     pic_selection = picture[-1]
     pic_select = pic_selection.attributes.values[-2]
-    @pic = pic_select.value.split(" ").first
+    pic = pic_select.value.split(" ").first
     
     nutrition_url = info_scrape.css("div[class='btns'] > a")
-    @nutrition = nutrition_url.attr("href").value
+    nutrition = nutrition_url.attr("href").value
     
-    info.text
+   
   end
   
   def self.pic_selection
