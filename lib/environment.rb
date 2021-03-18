@@ -3,6 +3,7 @@ require_relative "./donutz/cli"
 require_relative "./donutz/donut"
 require_relative "./donutz/order"
 require_relative "./donutz/scraper"
+require_relative "./donutz/ascii"
 
 require 'pry'
 require 'nokogiri'
